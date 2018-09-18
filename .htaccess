@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} !^www\.
+RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+RewriteRule ^about-idf/([a-zA-Z0-9-/]+)$ about-idf/?slug=$1   [L]
+RewriteRule ^media-corner/([a-zA-Z0-9-/]+)$ media-corner/?slug=$1   [L]
+RewriteRule ^giving-back/([a-zA-Z0-9-/]+)$ giving-back/?slug=$1   [L]
+Header set X-Frame-Options DENY
+Header set X-XSS-Protection "1; mode=block"
+Header set X-Content-Security-Policy "allow 'self';"
+Header set X-Content-Type-Options "nosniff"
+ServerSignature Off
